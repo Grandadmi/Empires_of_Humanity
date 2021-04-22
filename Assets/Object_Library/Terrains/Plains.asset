@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f0733bb147b5a459a08fe1d8ad257b, type: 3}
+  m_Name: Plains
+  m_EditorClassIdentifier: 
+  name: Plains
+  type: grass_dry
+  color: {r: 0.68578315, g: 0.8867924, b: 0.35555357, a: 1}
+  terrainID: 2
+  movementModifer: 1.5
+  foodModifier: 1.5
+  resourceModifier: 2
+  DefenseModifier: 0.5
