@@ -1,0 +1,17 @@
+CHANGELOG:
+
+v0.1.3
+
+Camera:
+-switched keyboard panning to be relative to camera rotation instead of world axis
+-Enabled edge scrolling
+
+UI:
+-Lowered UI scale across all elements
+-Added Settings Panel
+	-Added controls for camera sensitivity
+	-Added toggle for edge scrolling
+	-Added toggle for DeveloperMod(devmode)
+	-Added toggle for AlowEditMode(show/removes ability to edit map)
+Backend
+-Added PlayerSettings

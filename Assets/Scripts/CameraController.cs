@@ -63,19 +63,19 @@ public class CameraController : MonoBehaviour
 
             if (Input.mousePosition.y >= Screen.height - cameraPanBorderThickness)
             {
-                newCamPos.z += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos += (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.y <= cameraPanBorderThickness)
             {
-                newCamPos.z -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos -= (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.x >= Screen.width - cameraPanBorderThickness)
             {
-                newCamPos.x += (cameraMoveSpeed * Time.deltaTime) * cameraMoveSensitivity;
+                newCamPos += (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.x <= cameraPanBorderThickness)
             {
-                newCamPos.x -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos -= (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
             }
         }
         if (!manager.editMode)
@@ -163,19 +163,19 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            newCamPos.z += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            newCamPos.z -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.forward * -cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            newCamPos.x -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.right * -cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            newCamPos.x += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.Q))
         {
