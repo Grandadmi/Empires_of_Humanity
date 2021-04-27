@@ -5,6 +5,7 @@
 #################################################### Features ##########################################
 
 -Added "ESCAPE" to enter game menu
+-Enable "Drag Editing" to world Editor for Terrain/Elevation/Features/Resources
 
 ##################################################### Camera ###########################################
 
