@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3855822255740446975}
   - component: {fileID: 8699878350270277926}
   - component: {fileID: 533501121066498326}
+  - component: {fileID: 1538648791921066647}
   m_Layer: 5
   m_Name: Resource Button Container
   m_TagString: Untagged
@@ -194,6 +195,7 @@ MonoBehaviour:
   spriteToSwap: {fileID: 0}
   icon: {fileID: 2250245831953194071}
   valueText: {fileID: 0}
+  tooltip: {fileID: 1538648791921066647}
   manager: {fileID: 0}
 --- !u!114 &533501121066498326
 MonoBehaviour:
@@ -209,6 +211,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrayPos: 0
   editorObject: {fileID: 0}
+--- !u!114 &1538648791921066647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6438901757683071171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5266a3289bef4454aac43a6dbe9c5154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 
 --- !u!1 &7575933728813446287
 GameObject:
   m_ObjectHideFlags: 0

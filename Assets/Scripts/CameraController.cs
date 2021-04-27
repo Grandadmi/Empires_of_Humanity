@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform swivelTrans;
     [SerializeField] private GameObject selectedCellUI;
     [SerializeField] private TimeControlManager timeManager;
+    [SerializeField] private GameObject menuUI;
 
     //Pulbic Player Prefs Values
     public float cameraMoveSensitivity;
     public float zoomSensitivity;
+    public bool isInSettingsMenu;
 
     //Serialized Private Fields
     [SerializeField] private float movementTime;
@@ -58,7 +61,7 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseInput()
     {
-        if (!manager.editMode && manager.allowEdgeScroll)
+        if (!manager.editMode && manager.allowEdgeScroll && !isInSettingsMenu)
         {
 
             if (Input.mousePosition.y >= Screen.height - cameraPanBorderThickness)
@@ -152,7 +155,7 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
-        if (Input.mouseScrollDelta.y != 0)
+        if (Input.mouseScrollDelta.y != 0 && !isInSettingsMenu)
         {
             newZoom -= Input.mouseScrollDelta.y * new Vector3(0, zoomSpeed, 0);
         }
@@ -208,6 +211,12 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus))
         {
             timeManager.DecreaseTimeStep();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menuUI.SetActive(true);
+            Button menubuttion = menuUI.GetComponent<Button>();
+            menubuttion.onClick.Invoke();
         }
 
         //CLAMP CAMERA APATURE

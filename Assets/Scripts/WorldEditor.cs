@@ -148,6 +148,7 @@ public class WorldEditor : MonoBehaviour
         ValidateDrag(currentCell);
         if (isDrag)
         {
+            EditCell(currentCell);
             EditRiver(currentCell);
             dragStartCell = currentCell;
         }
@@ -357,7 +358,7 @@ public class WorldEditor : MonoBehaviour
 
     public void SelectResource(int index)
     {
-        Debug.Log("Selected" + resources[index].name);
+        //Debug.Log("Selected" + resources[index].name);
         applyResource = index >= 1;
         if (applyResource)
         {
@@ -396,7 +397,7 @@ public class WorldEditor : MonoBehaviour
                 toggle.isOn = true;
                 disableResourceEditToggle = toggle;
             }
-
+            helper.UpdateTooltip(resources[i].name);
             helper.UpdateResourceUI(resources[i]);
         }
 

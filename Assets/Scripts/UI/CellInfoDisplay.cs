@@ -46,6 +46,7 @@ public class CellInfoDisplay : MonoBehaviour
             GameObject resourceBox = Instantiate(resourceBoxPrefab, resourceDisplay.transform);
             UI_Helper helper = resourceBox.GetComponent<UI_Helper>();
             helper.UpdateResourceUI(resource);
+            helper.UpdateTooltip(resource.name);
             prefabs.Add(resourceBox);            
         }
         //TODO: do above for the cell modifiers

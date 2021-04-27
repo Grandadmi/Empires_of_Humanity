@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SObjs\Resource.cs" />
+    <Compile Include="Assets\Scripts\Serialized\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\UI\FlexibleGridLayout.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HexFeatureManager.cs" />
@@ -84,7 +85,10 @@
     <Compile Include="Assets\Scripts\EdgeVertices.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Helper.cs" />
     <Compile Include="Assets\Scripts\WorldEditor.cs" />
-    <Compile Include="Assets\Scripts\PlayerSettings.cs" />
+    <Compile Include="Assets\Scripts\UI\VersionText.cs" />
+    <Compile Include="Assets\Scripts\UI\Tooltip.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Shaders\Custom_River.shader" />

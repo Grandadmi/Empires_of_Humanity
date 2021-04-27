@@ -351,7 +351,7 @@ public class HexCell : MonoBehaviour
 
     private void CalculateResourceValues()
     {
-        foodValue = 1f;
+        foodValue = terrain_Type.foodModifier;
         foreach (Resource resource in resources)
         {
             if (resource.type == ResourceType.Food)
@@ -361,8 +361,7 @@ public class HexCell : MonoBehaviour
             if (resource.type == ResourceType.Sea_Food)
             {
                 foodValue += resource.value;
-            }
-            foodValue *= terrain_Type.foodModifier;
+            };
         }
     }
 
