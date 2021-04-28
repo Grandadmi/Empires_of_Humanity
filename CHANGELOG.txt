@@ -45,9 +45,25 @@
 
 
 ###################################################### v0.2 ############################################
+
 #################################################### Features ##########################################
+
+-Added Settlements
+-Removed Settlement Level painting in editor
+-Settlements "claim" the directly surrounding tiles
+-food is now collected and stored by the settlement
+-population growth over time
+
 ##################################################### Camera ###########################################
 ####################################################### UI #############################################
+
+-Changed Settlement to an add/remove/ignore system
+-Removed Settlement LEvel Slider
+
 ##################################################### Fixes ############################################
 #################################################### Backend ###########################################
+
+-Added Settlements
+-Added Building Scripable Objects
+
 ################################################## Known Issues ########################################

@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     //public bool allowWorldEdit;
     //public bool allowCheats;
 
+    public List<Settlement> settlements;
+
+    //Global Variables
+    public float foodPerPop;
+    public float goodsPerPop;
+
     
     // Start is called before the first frame update
     void Awake()

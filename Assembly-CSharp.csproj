@@ -64,12 +64,16 @@
     <Compile Include="Assets\Scripts\HexEdgeType.cs" />
     <Compile Include="Assets\Scripts\HexMetrics.cs" />
     <Compile Include="Assets\Scripts\TimeControlManager.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipSystem.cs" />
     <Compile Include="Assets\Scripts\HexMesh.cs" />
     <Compile Include="Assets\Scripts\HexGridChunk.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\HexHash.cs" />
     <Compile Include="Assets\Scripts\UI\MapModes.cs" />
+    <Compile Include="Assets\Scripts\UI\VersionText.cs" />
+    <Compile Include="Assets\Scripts\UI\Tooltip.cs" />
     <Compile Include="Assets\Scripts\UI\TabButton.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipTrigger.cs" />
     <Compile Include="Assets\Scripts\SObjs\Terrain_Type.cs" />
     <Compile Include="Assets\Scripts\UI\PanelGroup.cs" />
     <Compile Include="Assets\Scripts\HexDirection.cs" />
@@ -85,10 +89,7 @@
     <Compile Include="Assets\Scripts\EdgeVertices.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Helper.cs" />
     <Compile Include="Assets\Scripts\WorldEditor.cs" />
-    <Compile Include="Assets\Scripts\UI\VersionText.cs" />
-    <Compile Include="Assets\Scripts\UI\Tooltip.cs" />
-    <Compile Include="Assets\Scripts\UI\TooltipSystem.cs" />
-    <Compile Include="Assets\Scripts\UI\TooltipTrigger.cs" />
+    <Compile Include="Assets\Scripts\SObjs\Building.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Shaders\Custom_River.shader" />
