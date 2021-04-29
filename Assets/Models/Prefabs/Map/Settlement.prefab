@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60172ba8ffcccb4990cb93776b437b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settlementPrefab: {fileID: 911503469125865357}
   hostCell: {fileID: 0}
   settlementID: 0
-  settlementName: Cortez
+  settlementName: null
   settlementPopulaiton: 0
   ruralPopulation: 0
   settlementLevel: 0
@@ -55,9 +56,9 @@ MonoBehaviour:
   netFood: 0
   storedFood: 0
   _Manpower: 0
-  popGrowthMod: 0.25
-  popDeclineMod: 0.01
-  empireRuralPercentage: 0.6
+  popGrowthMod: 0.005
+  popDeclineMod: 0.0025
+  empireRuralPercentage: 0.8
   _EmpireManpowerPercentage: 0.8
   _StoredFoodMax: 100
   localPopGrowth: 0.1

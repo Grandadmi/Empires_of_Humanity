@@ -7,9 +7,10 @@ public class Settlement : MonoBehaviour
     //Connections
     private GameManager gameManager;
     private HexGrid hexGrid;
+    [SerializeField] private GameObject settlementPrefab;
 
     //private unique identifiers
-    [SerializeField] HexCell hostCell;
+    public HexCell hostCell;
     [SerializeField] int settlementID;
 
     //Tracked Variables
@@ -47,7 +48,7 @@ public class Settlement : MonoBehaviour
     [SerializeField] private float _StoredFoodMax = 100f;
 
     //Local Variables
-    [SerializeField] private float localPopGrowth = 0.01f;
+    public float localPopGrowth = 0.01f;
     public bool isStarving;
 
     //ControledCells
@@ -55,29 +56,44 @@ public class Settlement : MonoBehaviour
     private int AOIradius;
     private float _PopHappyBonus;
 
-    public void InstatiateSettlement(HexCell cell, string name)
+    public void InstatiateSettlement(HexCell cell, string name ="")
     {
         gameManager = FindObjectOfType<GameManager>();
         hexGrid = FindObjectOfType<HexGrid>();
         gameManager.settlements.Add(this);
         settlementID = (gameManager.settlements.Count);
+        if (name == null || settlementName == "null")
+        {
+            int randomName = (Random.Range(0, gameManager.settlementNames.Count)) - 1;
+            settlementName = gameManager.settlementNames[randomName];
+        }
+        else
+        {
+            settlementName = name;
+        }
         hostCell = cell;
-        controlledCells.Add(hostCell);
-        settlementName = name;
         //Temporary Population at Instatation
-        settlementPopulaiton = 100f;
-        ruralPopulation = settlementPopulaiton * empireRuralPercentage;
+        int initalPop = 150;
+        ruralPopulation = Mathf.Round(initalPop * empireRuralPercentage);
+        settlementPopulaiton = initalPop - ruralPopulation;
         settlementLevel = 1;
-        AOIradius = 1;
+        AOIradius = settlementLevel;
         ClaimAreaofInfluence();
         SetConsumptions();
         ProduceResources();
+        SetPopHappiness();
+        Debug.Log("New settlement founded with name " + settlementName + " at " + hostCell.coordinates);
     }
 
     public void RazeSettlement()
     {
         gameManager.settlements.Remove(this);
-        Destroy(this);
+        foreach (HexCell cell in controlledCells)
+        {
+            cell.controllingSettelmentID = 0;
+        }
+        controlledCells.Clear();
+        Destroy(settlementPrefab);
     }
 
     public void BuildingBuilding(Building building)
@@ -100,6 +116,10 @@ public class Settlement : MonoBehaviour
         rawFoodIncome = 0f;
         for (int i = 0; i < controlledCells.Count; i++)
         {
+            if (controlledCells[i] == hostCell)
+            {
+                continue;
+            }
             rawFoodIncome += controlledCells[i].foodValue;
         }
 
@@ -141,8 +161,8 @@ public class Settlement : MonoBehaviour
     private void SetConsumptions()
     {
         //food
-        foodConsuption = (settlementPopulaiton / gameManager.foodPerPop) + ruralPopulation / (gameManager.foodPerPop / 2);
-        //goodsConsuption = population / gameManager.goodsPerpop;
+        foodConsuption = (settlementPopulaiton / gameManager._PopulationPerFoodUnit) + ruralPopulation / (gameManager._PopulationPerFoodUnit * 2);
+        //Consumer Goods
     }
 
     private void UpdatePopulations()

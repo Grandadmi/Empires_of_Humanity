@@ -18,10 +18,11 @@ public class GameManager : MonoBehaviour
     //public bool allowCheats;
 
     public List<Settlement> settlements;
+    public List<string> settlementNames;
 
     //Global Variables
-    public float foodPerPop;
-    public float goodsPerPop;
+    public float _PopulationPerFoodUnit;
+    public float _PopulationPerGoodsUnit;
 
     
     // Start is called before the first frame update

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private HexGrid grid;
     [SerializeField] private Transform swivelTrans;
     [SerializeField] private GameObject selectedCellUI;
+    [SerializeField] private GameObject selectedSettlementUI;
     [SerializeField] private TimeControlManager timeManager;
     [SerializeField] private GameObject menuUI;
 
@@ -99,9 +100,18 @@ public class CameraController : MonoBehaviour
                         }
                         selectedCell = grid.GetCell(hit.point);
                         selectedCell.IsSelected = false;
-                        selectedCellUI.SetActive(true);
-                        CellInfoDisplay cellUI = selectedCellUI.GetComponent<CellInfoDisplay>();
-                        cellUI.UpdateUIInformation(selectedCell);
+                        if (!selectedCell.isSettled)
+                        {
+                            selectedCellUI.SetActive(true);
+                            CellInfoDisplay cellUI = selectedCellUI.GetComponent<CellInfoDisplay>();
+                            cellUI.UpdateUIInformation(selectedCell);
+                        }
+                        if (selectedCell.isSettled)
+                        {
+                            SettlementInfoScreen infoScreen = selectedSettlementUI.GetComponent<SettlementInfoScreen>();
+                            infoScreen.OpenUI(selectedCell.settlement);
+                        }
+
                         //Debug.Log("Selected Cell" + selectedCell.coordinates);
                     }
                 }
@@ -214,9 +224,16 @@ public class CameraController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menuUI.SetActive(true);
-            Button menubuttion = menuUI.GetComponent<Button>();
-            menubuttion.onClick.Invoke();
+            if (selectedSettlementUI.activeInHierarchy == true)
+            {
+                selectedSettlementUI.SetActive(false);
+            }
+            else
+            {
+                menuUI.SetActive(true);
+                Button menubuttion = menuUI.GetComponent<Button>();
+                menubuttion.onClick.Invoke();
+            }
         }
 
         //CLAMP CAMERA APATURE

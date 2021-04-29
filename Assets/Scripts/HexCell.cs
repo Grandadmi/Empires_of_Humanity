@@ -495,7 +495,7 @@ public class HexCell : MonoBehaviour
     {
         Instantiate(settlementprefab, this.transform);
         settlement = GetComponentInChildren<Settlement>();
-        settlement.InstatiateSettlement(this, "random");
+        settlement.InstatiateSettlement(this);
         SettlementLevel = 4;
         isSettled = true;
     }

@@ -296,7 +296,7 @@ public class WorldEditor : MonoBehaviour
             cell.RemoveSettlement();
             cell.SettlementLevel = 0;
         }
-        if (SettlementMode == OptionalToggle.Add)
+        if (SettlementMode == OptionalToggle.Add && !cell.IsUnderwater)
         {
             cell.FoundSettlement(HexGrid.settlementPrefab);
         }

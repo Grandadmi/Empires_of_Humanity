@@ -53,17 +53,20 @@
 -Settlements "claim" the directly surrounding tiles
 -food is now collected and stored by the settlement
 -population growth over time
+-added a population Happiness modifier
 
 ##################################################### Camera ###########################################
 ####################################################### UI #############################################
 
 -Changed Settlement to an add/remove/ignore system
--Removed Settlement LEvel Slider
+-Removed Settlement Level Slider
+-Added Settlement UI
 
 ##################################################### Fixes ############################################
 #################################################### Backend ###########################################
 
 -Added Settlements
 -Added Building Scripable Objects
+-Added a moveable camera targeting a render texture
 
 ################################################## Known Issues ########################################
