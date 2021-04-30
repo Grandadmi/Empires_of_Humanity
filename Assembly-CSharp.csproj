@@ -56,34 +56,41 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\HexMesh.cs" />
-    <Compile Include="Assets\Scripts\UI\UI_Helper.cs" />
-    <Compile Include="Assets\Scripts\HexCoordinates.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\HexGridChunk.cs" />
-    <Compile Include="Assets\Scripts\ListPool.cs" />
     <Compile Include="Assets\Scripts\SObjs\Resource.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Settlement.cs" />
-    <Compile Include="Assets\Scripts\HexCell.cs" />
-    <Compile Include="Assets\Scripts\HexHash.cs" />
-    <Compile Include="Assets\Scripts\TimeControlManager.cs" />
-    <Compile Include="Assets\Scripts\HexDirection.cs" />
+    <Compile Include="Assets\Scripts\Serialized\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\UI\FlexibleGridLayout.cs" />
-    <Compile Include="Assets\Scripts\HexEdgeType.cs" />
-    <Compile Include="Assets\Scripts\HexFeatureManager.cs" />
-    <Compile Include="Assets\Scripts\HexGrid.cs" />
-    <Compile Include="Assets\Scripts\HexResource.cs" />
-    <Compile Include="Assets\Scripts\WorldEditor.cs" />
-    <Compile Include="Assets\Scripts\EdgeVertices.cs" />
-    <Compile Include="Assets\Scripts\HexMetrics.cs" />
-    <Compile Include="Assets\Scripts\UI\MapModes.cs" />
-    <Compile Include="Assets\Scripts\UI\CellInfoDisplay.cs" />
-    <Compile Include="Assets\Scripts\UI\EditorToggleManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\SObjs\Terrain_Type.cs" />
+    <Compile Include="Assets\Scripts\HexFeatureManager.cs" />
+    <Compile Include="Assets\Scripts\HexEdgeType.cs" />
+    <Compile Include="Assets\Scripts\HexMetrics.cs" />
+    <Compile Include="Assets\Scripts\TimeControlManager.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipSystem.cs" />
+    <Compile Include="Assets\Scripts\HexMesh.cs" />
+    <Compile Include="Assets\Scripts\HexGridChunk.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\HexHash.cs" />
+    <Compile Include="Assets\Scripts\UI\MapModes.cs" />
+    <Compile Include="Assets\Scripts\UI\VersionText.cs" />
+    <Compile Include="Assets\Scripts\UI\Tooltip.cs" />
     <Compile Include="Assets\Scripts\UI\TabButton.cs" />
-    <Compile Include="Assets\Scripts\UI\TabGroup.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipTrigger.cs" />
+    <Compile Include="Assets\Scripts\SObjs\Terrain_Type.cs" />
+    <Compile Include="Assets\Scripts\SObjs\Building.cs" />
     <Compile Include="Assets\Scripts\UI\PanelGroup.cs" />
+    <Compile Include="Assets\Scripts\HexDirection.cs" />
+    <Compile Include="Assets\Scripts\ListPool.cs" />
+    <Compile Include="Assets\Scripts\UI\TabGroup.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Settlement.cs" />
+    <Compile Include="Assets\Scripts\UI\CellInfoDisplay.cs" />
+    <Compile Include="Assets\Scripts\HexGrid.cs" />
+    <Compile Include="Assets\Scripts\HexCoordinates.cs" />
+    <Compile Include="Assets\Scripts\UI\EditorToggleManager.cs" />
+    <Compile Include="Assets\Scripts\HexResource.cs" />
+    <Compile Include="Assets\Scripts\HexCell.cs" />
+    <Compile Include="Assets\Scripts\EdgeVertices.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_Helper.cs" />
+    <Compile Include="Assets\Scripts\WorldEditor.cs" />
+    <Compile Include="Assets\Scripts\UI\settlementInfoScreen.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Shaders\Custom_River.shader" />
@@ -336,11 +343,11 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.4f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.burst@1.4.1\Unity.Burst.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@0.15.0-preview.21\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.4.1\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0-preview\Runtime\Newtonsoft.Json.dll</HintPath>
@@ -699,14 +706,20 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -714,11 +727,11 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Jobs.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
@@ -726,26 +739,20 @@
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Jobs">
       <HintPath>Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Jobs.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

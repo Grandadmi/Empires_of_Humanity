@@ -165,8 +165,7 @@ MonoBehaviour:
   m_text: '##'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fbb805ed063e52f44b0e7867e226e4da, type: 2}
-  m_sharedMaterial: {fileID: 6524957996878238675, guid: fbb805ed063e52f44b0e7867e226e4da,
-    type: 2}
+  m_sharedMaterial: {fileID: 6524957996878238675, guid: fbb805ed063e52f44b0e7867e226e4da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -265,6 +264,7 @@ GameObject:
   - component: {fileID: 1361181281871742022}
   - component: {fileID: 1361181281871742021}
   - component: {fileID: 1609417434820702606}
+  - component: {fileID: 3505761071662219573}
   m_Layer: 0
   m_Name: Resource UI Container
   m_TagString: Untagged
@@ -376,4 +376,19 @@ MonoBehaviour:
   spriteToSwap: {fileID: 0}
   icon: {fileID: 6862599914003482596}
   valueText: {fileID: 1361181281236087947}
+  tooltip: {fileID: 3505761071662219573}
   manager: {fileID: 0}
+--- !u!114 &3505761071662219573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361181281871742019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5266a3289bef4454aac43a6dbe9c5154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 

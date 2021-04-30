@@ -13,6 +13,7 @@ public class UI_Helper : MonoBehaviour
     [SerializeField] private Image spriteToSwap;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private TooltipTrigger tooltip;
 
     private Image activeSprite;
     public GameManager manager;
@@ -28,6 +29,7 @@ public class UI_Helper : MonoBehaviour
             ShowUIImage(false);
         }
         activeSprite = initialSprite;
+
     }
 
     public void TextUpdate(float textUpdateNumber)
@@ -90,5 +92,11 @@ public class UI_Helper : MonoBehaviour
         {
             valueText.text = resource.value.ToString();
         }
+    }
+
+    public void UpdateTooltip(string header, string content = "")
+    {
+        tooltip.header = header;
+        tooltip.content = content;
     }
 }
