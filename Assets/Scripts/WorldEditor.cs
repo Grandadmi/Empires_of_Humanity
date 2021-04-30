@@ -33,7 +33,6 @@ public class WorldEditor : MonoBehaviour
     bool applyTerrain;
     bool applyElevation = false;
     bool applyResource = false;
-    bool applySettlement = false;
     bool applyImprovement = false;
     bool applyForest = false;
     private bool isDrag;
@@ -46,11 +45,11 @@ public class WorldEditor : MonoBehaviour
     //private Color activeTerrainColor;
     private int activeElevation;
     private int activeSealevel;
-    private int activeSettlementLevel;
     private int activeImprovementLevel;
     private int activeForestLevel;
 
     OptionalToggle riverMode;
+    OptionalToggle SettlementMode;
 
     //controlling UI Elements
     [SerializeField] private TabGroup editorPanelsTabGroup;
@@ -134,6 +133,7 @@ public class WorldEditor : MonoBehaviour
             dragStartCell = currentCell = HexGrid.GetCell(hit.point);
             //Debug.Log("Hit cell" + currentCell);
             EditCell(currentCell);
+            EditSettlement(currentCell);
         }
         else
         {
@@ -148,6 +148,7 @@ public class WorldEditor : MonoBehaviour
         ValidateDrag(currentCell);
         if (isDrag)
         {
+            EditCell(currentCell);
             EditRiver(currentCell);
             dragStartCell = currentCell;
         }
@@ -159,7 +160,7 @@ public class WorldEditor : MonoBehaviour
         disableElevationEditToggle.isOn = false;
         disableResourceEditToggle.isOn = true;
         disableRiverEditToggle.isOn = true;
-        disableSettlementEditToggle.isOn = false;
+        disableSettlementEditToggle.isOn = true;
         disableForestEditToggle.isOn = false;
         disableImprovementEditToggle.isOn = false;
     }
@@ -258,15 +259,11 @@ public class WorldEditor : MonoBehaviour
             cell.ValidateResources();
         }
         //TEMP!! add settlement to map for dictated value
-        if (applySettlement)
-        {
-            cell.SettlementLevel = activeSettlementLevel;
-        }
-        if (applyForest)
+        if (applyForest && !cell.IsUnderwater)
         {
             cell.ForestLevel = activeForestLevel;
         }
-        if (applyImprovement)
+        if (applyImprovement && !cell.IsUnderwater)
         {
             cell.ImprovementLevel = activeImprovementLevel;
         }
@@ -289,6 +286,23 @@ public class WorldEditor : MonoBehaviour
                     othercell.SetOutgoingRiver(dragDirection);
                 }
             }
+        }
+    }
+
+    void EditSettlement(HexCell cell)
+    {
+        if (SettlementMode == OptionalToggle.Remove)
+        {
+            cell.RemoveSettlement();
+            cell.SettlementLevel = 0;
+        }
+        if (SettlementMode == OptionalToggle.Add && !cell.IsUnderwater)
+        {
+            cell.FoundSettlement(HexGrid.settlementPrefab);
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -327,15 +341,6 @@ public class WorldEditor : MonoBehaviour
         activeSealevel = (int)sealevel;
     }
 
-    public void SetApplySettlement(bool toggle)
-    {
-        applySettlement = toggle;
-    }
-
-    public void SetSettlement(float settlementValue)
-    {
-        activeSettlementLevel = (int)settlementValue;
-    }
     public void SetApplyImprovement(bool toggle)
     {
         applyImprovement = toggle;
@@ -357,7 +362,7 @@ public class WorldEditor : MonoBehaviour
 
     public void SelectResource(int index)
     {
-        Debug.Log("Selected" + resources[index].name);
+        //Debug.Log("Selected" + resources[index].name);
         applyResource = index >= 1;
         if (applyResource)
         {
@@ -375,6 +380,11 @@ public class WorldEditor : MonoBehaviour
     public void SetRiverMode(int mode)
     {
         riverMode = (OptionalToggle)mode;
+    }
+
+    public void SetSettlementMode(int mode)
+    {
+        SettlementMode = (OptionalToggle)mode;
     }
 
     private void CreateResourceUIArray()
@@ -396,7 +406,7 @@ public class WorldEditor : MonoBehaviour
                 toggle.isOn = true;
                 disableResourceEditToggle = toggle;
             }
-
+            helper.UpdateTooltip(resources[i].name);
             helper.UpdateResourceUI(resources[i]);
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] private HexGrid grid;
     [SerializeField] private Transform swivelTrans;
     [SerializeField] private GameObject selectedCellUI;
+    [SerializeField] private GameObject selectedSettlementUI;
     [SerializeField] private TimeControlManager timeManager;
+    [SerializeField] private GameObject menuUI;
 
     //Pulbic Player Prefs Values
     public float cameraMoveSensitivity;
     public float zoomSensitivity;
+    public bool isInSettingsMenu;
 
     //Serialized Private Fields
     [SerializeField] private float movementTime;
@@ -58,24 +62,24 @@ public class CameraController : MonoBehaviour
 
     void HandleMouseInput()
     {
-        if (!manager.editMode && manager.allowEdgeScroll)
+        if (!manager.editMode && manager.allowEdgeScroll && !isInSettingsMenu)
         {
 
             if (Input.mousePosition.y >= Screen.height - cameraPanBorderThickness)
             {
-                newCamPos.z += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos += (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.y <= cameraPanBorderThickness)
             {
-                newCamPos.z -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos -= (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.x >= Screen.width - cameraPanBorderThickness)
             {
-                newCamPos.x += (cameraMoveSpeed * Time.deltaTime) * cameraMoveSensitivity;
+                newCamPos += (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
             }
             if (Input.mousePosition.x <= cameraPanBorderThickness)
             {
-                newCamPos.x -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+                newCamPos -= (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
             }
         }
         if (!manager.editMode)
@@ -96,9 +100,18 @@ public class CameraController : MonoBehaviour
                         }
                         selectedCell = grid.GetCell(hit.point);
                         selectedCell.IsSelected = false;
-                        selectedCellUI.SetActive(true);
-                        CellInfoDisplay cellUI = selectedCellUI.GetComponent<CellInfoDisplay>();
-                        cellUI.UpdateUIInformation(selectedCell);
+                        if (!selectedCell.isSettled)
+                        {
+                            selectedCellUI.SetActive(true);
+                            CellInfoDisplay cellUI = selectedCellUI.GetComponent<CellInfoDisplay>();
+                            cellUI.UpdateUIInformation(selectedCell);
+                        }
+                        if (selectedCell.isSettled)
+                        {
+                            SettlementInfoScreen infoScreen = selectedSettlementUI.GetComponent<SettlementInfoScreen>();
+                            infoScreen.OpenUI(selectedCell.settlement);
+                        }
+
                         //Debug.Log("Selected Cell" + selectedCell.coordinates);
                     }
                 }
@@ -152,7 +165,7 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
-        if (Input.mouseScrollDelta.y != 0)
+        if (Input.mouseScrollDelta.y != 0 && !isInSettingsMenu)
         {
             newZoom -= Input.mouseScrollDelta.y * new Vector3(0, zoomSpeed, 0);
         }
@@ -163,19 +176,19 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            newCamPos.z += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.forward * cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            newCamPos.z -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.forward * -cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            newCamPos.x -= cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.right * -cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            newCamPos.x += cameraMoveSpeed * Time.deltaTime * cameraMoveSensitivity;
+            newCamPos += (transform.right * cameraMoveSpeed * cameraMoveSensitivity);
         }
         if (Input.GetKey(KeyCode.Q))
         {
@@ -208,6 +221,19 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus))
         {
             timeManager.DecreaseTimeStep();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (selectedSettlementUI.activeInHierarchy == true)
+            {
+                selectedSettlementUI.SetActive(false);
+            }
+            else
+            {
+                menuUI.SetActive(true);
+                Button menubuttion = menuUI.GetComponent<Button>();
+                menubuttion.onClick.Invoke();
+            }
         }
 
         //CLAMP CAMERA APATURE
