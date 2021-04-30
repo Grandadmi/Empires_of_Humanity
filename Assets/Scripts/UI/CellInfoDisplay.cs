@@ -21,10 +21,20 @@ public class CellInfoDisplay : MonoBehaviour
     [SerializeField] private Image cellArtworkDisplay;
     [SerializeField] private Slider influenceSlider;
 
+    private HexCell selectedCell;
+    private HexGrid grid;
+
     //Various Utility Collections
     [SerializeField] private List<GameObject> prefabs;
+
+    public void Start()
+    {
+        grid = FindObjectOfType<HexGrid>();
+    }
+
     public void UpdateUIInformation(HexCell cell)
     {
+        selectedCell = cell;
         cellTypeString.text = cell.cellName.ToString(); //Set to biome instead of terrain
         cellArtworkDisplay.color = cell.terrain_Type.color; //Set to biome Artwork w/feature mods
         influenceSlider.value = 0f; //Display of cell influences in graphical form
@@ -50,5 +60,10 @@ public class CellInfoDisplay : MonoBehaviour
             prefabs.Add(resourceBox);            
         }
         //TODO: do above for the cell modifiers
+    }
+
+    public void  UISettlementFounding()
+    {
+        selectedCell.FoundSettlement(grid.settlementPrefab);
     }
 }

@@ -24,7 +24,7 @@ public class SettlementInfoScreen : MonoBehaviour
 
     //private string stringFormat1 = "###%";
     private string stringFormat2 = "##.#";
-    private string stringFormat3 = "##.#";
+    private string stringFormat3 = "#.##";
 
     public void OpenUI(Settlement settlement)
     {
@@ -43,11 +43,13 @@ public class SettlementInfoScreen : MonoBehaviour
     }
     public void UpdateSettlementUI(Settlement settlement)
     {
-        settlementPop.text = Mathf.Round(settlement.settlementPopulaiton).ToString();
-        settlementRuralPop.text = Mathf.Round(settlement.ruralPopulation).ToString();
-        settlementFood.text = settlement.netFood.ToString(stringFormat2);
-        settlementHappiness.text = (settlement._PopHappiness * 100).ToString();
-        settlementGrowthRate.text = (settlement.localPopGrowth * 100).ToString(stringFormat3);
-        foodTooltip.content = settlement.netFood.ToString(stringFormat2) + "\n" + settlement.rawFoodIncome.ToString(stringFormat2) + "\n" + settlement.foodConsuption.ToString(stringFormat2);
+        settlementPop.text = "Settlement Population: " + Mathf.Round(settlement.settlementPopulaiton).ToString();
+        settlementRuralPop.text = "Rural Population: " + Mathf.Round(settlement.ruralPopulation).ToString();
+        settlementFood.text = "Settlement Food Balance: " + settlement.netFood.ToString(stringFormat2);
+        settlementHappiness.text = "Settlement Happiness: " + (settlement._PopHappiness * 100).ToString();
+        settlementGrowthRate.text = "Local Growth Rate: " + (settlement.localPopGrowth).ToString(stringFormat3);
+        foodTooltip.content = "Balance: " + settlement.netFood.ToString(stringFormat2) + 
+            "\n" + "\n" + "Income: " + settlement.rawFoodIncome.ToString(stringFormat2) + 
+            "\n" + "\n" + "Consuption: " + settlement.foodConsuption.ToString(stringFormat2);
     }
 }

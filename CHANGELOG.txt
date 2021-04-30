@@ -56,17 +56,34 @@
 -added a population Happiness modifier
 
 ##################################################### Camera ###########################################
+
+-Added a camera to show selected settlement in ui
+
 ####################################################### UI #############################################
 
 -Changed Settlement to an add/remove/ignore system
 -Removed Settlement Level Slider
 -Added Settlement UI
 
-##################################################### Fixes ############################################
 #################################################### Backend ###########################################
 
 -Added Settlements
 -Added Building Scripable Objects
 -Added a moveable camera targeting a render texture
 
-################################################## Known Issues ########################################
+
+
+
+
+
+#################################################### v0.2.1 ############################################
+
+###################################################### UI ##############################################
+
+-Added functionality to a button to found a settlement on the selected tile outside of the editor
+-Updated Slash screen
+
+#################################################### Balance ###########################################
+
+-Changed Population Growth Equations to (localgrowth + empire growth - empire decline)*population
+-Modified how local pop growth modifier is calaculated

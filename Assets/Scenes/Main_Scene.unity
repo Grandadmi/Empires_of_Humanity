@@ -9740,7 +9740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &465232608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9891,10 +9891,10 @@ RectTransform:
   m_Father: {fileID: 718588449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900, y: -10}
-  m_SizeDelta: {x: 1750, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &475711452
 MonoBehaviour:
@@ -9916,7 +9916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Prototype V0.2
+  m_text: Prototype V0.2.1 "Settlement 1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e532b723452b02449b29764bf9d875e, type: 2}
   m_sharedMaterial: {fileID: 7468291324530260185, guid: 4e532b723452b02449b29764bf9d875e, type: 2}
@@ -15198,8 +15198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5266a3289bef4454aac43a6dbe9c5154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: Next Settlement
-  content: Not Implemented
+  header: Close Window (esc)
+  content: Close the settlement screen
 --- !u!114 &704962124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15243,7 +15243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 704962125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1530196713}
+        m_TargetAssemblyTypeName: SettlementInfoScreen, Assembly-CSharp
+        m_MethodName: CloseUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &704962125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33008,7 +33020,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Close
 --- !u!222 &1417817648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38261,10 +38273,10 @@ RectTransform:
   m_Father: {fileID: 1811780341}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1525, y: -50}
-  m_SizeDelta: {x: 450, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684688884
 MonoBehaviour:
@@ -41072,10 +41084,10 @@ RectTransform:
   m_Father: {fileID: 718588449}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900, y: -680}
-  m_SizeDelta: {x: 1750, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811780342
 MonoBehaviour:
@@ -42542,11 +42554,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1858646469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698402398}
+        m_TargetAssemblyTypeName: CellInfoDisplay, Assembly-CSharp
+        m_MethodName: UISettlementFounding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1858646468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48578,10 +48602,10 @@ RectTransform:
   m_Father: {fileID: 718588449}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900, y: -112}
-  m_SizeDelta: {x: 1750, y: 516}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 900, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2097882642
 MonoBehaviour:
@@ -48603,19 +48627,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to prototype 0.1 for Empire''s of Humanity. This version is meant
-    to test the player input functions. The editor and time control systems are fully
-    implemented and  functional.
+  m_text: 'Major Features:
+
+    Settings Menu
+
+    Settlements
 
 
-    feel free to experiment with the making of
-    maps, however there is no save/load functionality as of yet, and many ui elements
-    have missing or temporary art assets. a tooltip system is being worked on and
-    will be included in the next build.
+    This is a test
+    of the Settlement System. Settlements are in their most basic form, mainly population
+    and location as well as food gathering and consumption from the surrounding six
+    tiles, resources are not gathered from thier host cell. Further updates to this
+    system will include buildings, settlement aera''s of influence, levels and satellite
+    settlements.
 
 
-    While there is no changelog for this
-    build, one will be included in following builds. Thank you.'
+    For a full breakdown of changes see the Changelog, and please
+    give feedback in the feedback channel on Discord'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e532b723452b02449b29764bf9d875e, type: 2}
   m_sharedMaterial: {fileID: 7468291324530260185, guid: 4e532b723452b02449b29764bf9d875e, type: 2}
@@ -48649,8 +48677,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -48707,7 +48735,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 1750
   m_PreferredHeight: 999999
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -48724,7 +48752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 0
 --- !u!1 &2120045407
 GameObject:
@@ -49068,10 +49096,10 @@ RectTransform:
   m_Father: {fileID: 1811780341}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 647.5, y: -50}
-  m_SizeDelta: {x: 1295, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144195186
 MonoBehaviour:

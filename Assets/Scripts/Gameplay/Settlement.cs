@@ -167,10 +167,10 @@ public class Settlement : MonoBehaviour
 
     private void UpdatePopulations()
     {
-        float _AOIPop = ruralPopulation + settlementPopulaiton;
-        float _NewPop = _AOIPop + (_AOIPop * ((localPopGrowth + _PopHappyBonus) * popGrowthMod) + (_AOIPop * -popDeclineMod));
-        ruralPopulation = _NewPop * empireRuralPercentage;
-        settlementPopulaiton = _NewPop - ruralPopulation;
+        localPopGrowth = (netFood / gameManager._PopulationPerFoodUnit) * _PopHappyBonus;
+        settlementPopulaiton = (localPopGrowth + popGrowthMod - popDeclineMod) * settlementPopulaiton;
+        ruralPopulation = (localPopGrowth + popGrowthMod - popDeclineMod) * ruralPopulation;
+        float _NewPop = Mathf.Round(settlementPopulaiton + ruralPopulation);
         _Manpower = _NewPop * _EmpireManpowerPercentage;
     }
 
