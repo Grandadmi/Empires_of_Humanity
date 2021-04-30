@@ -160,7 +160,7 @@ public class WorldEditor : MonoBehaviour
         disableElevationEditToggle.isOn = false;
         disableResourceEditToggle.isOn = true;
         disableRiverEditToggle.isOn = true;
-        disableSettlementEditToggle.isOn = false;
+        disableSettlementEditToggle.isOn = true;
         disableForestEditToggle.isOn = false;
         disableImprovementEditToggle.isOn = false;
     }
@@ -259,11 +259,11 @@ public class WorldEditor : MonoBehaviour
             cell.ValidateResources();
         }
         //TEMP!! add settlement to map for dictated value
-        if (applyForest)
+        if (applyForest && !cell.IsUnderwater)
         {
             cell.ForestLevel = activeForestLevel;
         }
-        if (applyImprovement)
+        if (applyImprovement && !cell.IsUnderwater)
         {
             cell.ImprovementLevel = activeImprovementLevel;
         }

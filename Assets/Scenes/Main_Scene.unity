@@ -9916,7 +9916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Prototype V0.2.1 "Settlement 1"
+  m_text: Prototype V0.2.2 "Settlements"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e532b723452b02449b29764bf9d875e, type: 2}
   m_sharedMaterial: {fileID: 7468291324530260185, guid: 4e532b723452b02449b29764bf9d875e, type: 2}

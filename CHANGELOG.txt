@@ -29,6 +29,7 @@
 ##################################################### Fixes ############################################
 
 -Fixed Raw Food Sums on Tiles
+-Forests and Improvements can not longer be applied to underwater cells
 
 #################################################### Backend ###########################################
 
@@ -87,3 +88,11 @@
 
 -Changed Population Growth Equations to (localgrowth + empire growth - empire decline)*population
 -Modified how local pop growth modifier is calaculated
+
+#################################################### v0.2.2 ############################################
+##################################################### Fixes ############################################
+
+-Fixed Population growth applying recursivly at month tick
+-Fixed Settlement UI not updating
+-Fixed building of settlements underwater
+-Fixed update name typo on splash screen
