@@ -133,7 +133,7 @@ public class WorldEditor : MonoBehaviour
             dragStartCell = currentCell = HexGrid.GetCell(hit.point);
             //Debug.Log("Hit cell" + currentCell);
             EditCell(currentCell);
-            EditSettlement(currentCell);
+            //EditSettlement(currentCell);
         }
         else
         {
@@ -289,22 +289,22 @@ public class WorldEditor : MonoBehaviour
         }
     }
 
-    void EditSettlement(HexCell cell)
-    {
-        if (SettlementMode == OptionalToggle.Remove)
-        {
-            cell.RemoveSettlement();
-            cell.SettlementLevel = 0;
-        }
-        if (SettlementMode == OptionalToggle.Add && !cell.IsUnderwater)
-        {
-            cell.FoundSettlement(HexGrid.settlementPrefab);
-        }
-        else
-        {
-            return;
-        }
-    }
+    //void EditSettlement(HexCell cell)
+    //{
+    //    if (SettlementMode == OptionalToggle.Remove)
+    //    {
+    //        cell.RemoveSettlement();
+    //        cell.SettlementLevel = 0;
+    //    }
+    //    if (SettlementMode == OptionalToggle.Add && !cell.IsUnderwater)
+    //    {
+    //        cell.FoundSettlement(HexGrid.settlementPrefab);
+    //    }
+    //    else
+    //    {
+    //        return;
+    //    }
+    //}
 
     public void ApplySealevel()
     {

@@ -11,7 +11,7 @@ public class HexCell : MonoBehaviour
     public Terrain_Type terrain_Type;
     public List<Resource> resources;
 
-    public Settlement settlement;
+    //public Settlement settlement;
 
     bool hasIncomingRiver, hasOutgoingRiver;
     HexDirection incomingRiver, outgoingRiver;
@@ -491,25 +491,25 @@ public class HexCell : MonoBehaviour
         CalculateResourceValues();
     }
 
-    public void FoundSettlement(GameObject settlementprefab)
-    {
-        Instantiate(settlementprefab, this.transform);
-        settlement = GetComponentInChildren<Settlement>();
-        settlement.InstatiateSettlement(this);
-        SettlementLevel = 4;
-        isSettled = true;
-    }
+    //public void FoundSettlement(GameObject settlementprefab)
+    //{
+    //    Instantiate(settlementprefab, this.transform);
+    //    settlement = GetComponentInChildren<Settlement>();
+    //    settlement.InstatiateSettlement(this);
+    //    SettlementLevel = 4;
+    //    isSettled = true;
+    //}
 
-    public void RemoveSettlement()
-    {
-        foreach (HexCell cell in settlement.controlledCells)
-        {
-            cell.controllingSettelmentID = 0;
-        }
-        settlement.RazeSettlement();
-        isSettled = false;
-        isWalled = false;
-    }
+    //public void RemoveSettlement()
+    //{
+    //    foreach (HexCell cell in settlement.controlledCells)
+    //    {
+    //        cell.controllingSettelmentID = 0;
+    //    }
+    //    settlement.RazeSettlement();
+    //    isSettled = false;
+    //    isWalled = false;
+    //}
 
     void Refresh()
     {

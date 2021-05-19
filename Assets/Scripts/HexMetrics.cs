@@ -3,7 +3,7 @@
 public static class HexMetrics
 {
     //World Data
-    public const int chunkSizeX = 4, chunkSizeZ = 4;
+    public const int chunkSizeX = 4, chunkSizeZ = 6;
 
     //Cell MeshData
     public const float outerToInner = 0.866025404f;
@@ -11,6 +11,7 @@ public static class HexMetrics
     public const float outerRadius = 4f;
     public const float innerRadius = outerRadius * outerToInner;
     public const float solidFactor = 0.8f;
+    public const float solidCenter = solidFactor * 0.4f;
     public const float waterFactor = 0.6f;
     public const float blendFactor = 1f - solidFactor;
     public const float waterBlendFactor = 1f - waterFactor;
@@ -76,6 +77,15 @@ public static class HexMetrics
         return corners[(int)direction + 1] * solidFactor;
     }
 
+    public static Vector3 GetFirstInnerCorner(HexDirection direction)
+    {
+        return corners[(int)direction] * solidCenter;
+    }
+
+    public static Vector3 GetSecondInnerCorner(HexDirection direction)
+    {
+        return corners[(int)direction + 1] * solidCenter;
+    }
     public static Vector3 GetFirstWaterCorner(HexDirection direction)
     {
         return corners[(int)direction] * waterFactor;

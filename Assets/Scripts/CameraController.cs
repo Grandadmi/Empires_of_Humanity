@@ -106,11 +106,11 @@ public class CameraController : MonoBehaviour
                             CellInfoDisplay cellUI = selectedCellUI.GetComponent<CellInfoDisplay>();
                             cellUI.UpdateUIInformation(selectedCell);
                         }
-                        if (selectedCell.isSettled)
-                        {
-                            SettlementInfoScreen infoScreen = selectedSettlementUI.GetComponent<SettlementInfoScreen>();
-                            infoScreen.OpenUI(selectedCell.settlement);
-                        }
+                        //if (selectedCell.isSettled)
+                        //{
+                        //    SettlementInfoScreen infoScreen = selectedSettlementUI.GetComponent<SettlementInfoScreen>();
+                        //    infoScreen.OpenUI(selectedCell.settlement);
+                        //}
 
                         //Debug.Log("Selected Cell" + selectedCell.coordinates);
                     }

@@ -62,11 +62,11 @@ public class CellInfoDisplay : MonoBehaviour
         //TODO: do above for the cell modifiers
     }
 
-    public void  UISettlementFounding()
-    {
-        if (!selectedCell.IsUnderwater)
-        {
-            selectedCell.FoundSettlement(grid.settlementPrefab);
-        }
-    }
+    //public void UISettlementFounding()
+    //{
+    //    if (!selectedCell.IsUnderwater)
+    //    {
+    //        selectedCell.FoundSettlement(grid.settlementPrefab);
+    //    }
+    //}
 }

@@ -1,0 +1,103 @@
+################################################### CHANGELOG ##########################################
+
+##################################################### v0.1.3 ###########################################
+
+#################################################### Features ##########################################
+
+-Added "ESCAPE" to enter game menu
+-Enable "Drag Editing" to world Editor for Terrain/Elevation/Features/Resources
+
+##################################################### Camera ###########################################
+
+-switched keyboard panning to be relative to camera rotation instead of world axis
+-Enabled edge scrolling
+
+####################################################### UI #############################################
+
+-Lowered UI scale across all elements
+-Added Settings Panel
+	-Added controls for camera sensitivity
+	-Added toggle for edge scrolling
+	-Added toggle for DeveloperMod(devmode)
+	-Added toggle for AlowEditMode(show/removes ability to edit map)
+	-Added Keyboard Controls Area
+-Added Tooltips
+	-Menu Buttons
+	-Resource Icons
+	-Most MICS buttons and fields
+
+##################################################### Fixes ############################################
+
+-Fixed Raw Food Sums on Tiles
+-Forests and Improvements can not longer be applied to underwater cells
+
+#################################################### Backend ###########################################
+
+-Added PlayerSettings
+-Added Tooltip System
+
+################################################## Known Issues ########################################
+
+-Settings Are NOT saved between sessions
+-Mouse Pointer sometimes renders over tooltip text
+
+
+
+
+
+###################################################### v0.2 ############################################
+
+#################################################### Features ##########################################
+
+-Added Settlements
+-Removed Settlement Level painting in editor
+-Settlements "claim" the directly surrounding tiles
+-food is now collected and stored by the settlement
+-population growth over time
+-added a population Happiness modifier
+
+##################################################### Camera ###########################################
+
+-Added a camera to show selected settlement in ui
+
+####################################################### UI #############################################
+
+-Changed Settlement to an add/remove/ignore system
+-Removed Settlement Level Slider
+-Added Settlement UI
+
+#################################################### Backend ###########################################
+
+-Added Settlements
+-Added Building Scripable Objects
+-Added a moveable camera targeting a render texture
+
+
+
+
+
+
+#################################################### v0.2.1 ############################################
+
+###################################################### UI ##############################################
+
+-Added functionality to a button to found a settlement on the selected tile outside of the editor
+-Updated Slash screen
+
+#################################################### Balance ###########################################
+
+-Changed Population Growth Equations to (localgrowth + empire growth - empire decline)*population
+-Modified how local pop growth modifier is calaculated
+
+#################################################### v0.2.2 ############################################
+##################################################### Fixes ############################################
+
+-Fixed Population growth applying recursivly at month tick
+-Fixed Settlement UI not updating
+-Fixed building of settlements underwater
+-Fixed update name typo on splash screen
+
+################################################## Known Issues ########################################
+
+-Tooltips from Settlement Screen are not disappearing if screen is closed with a tooltip active on screen
+-Time controls are not working properly. Time might decrease, or increase but not as they should. Pausing should be fine
