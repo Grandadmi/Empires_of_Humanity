@@ -33,3 +33,14 @@ public struct EdgeVertices
         return result;
     }
 }
+
+public struct EdgeVertices2
+{
+    public Vector3 v1, v2, v3; 
+    public EdgeVertices2(Vector3 corner1, Vector3 corner2)
+    {
+        v1 = corner1;
+        v2 = Vector3.Lerp(corner1, corner2, 0.5f);
+        v3 = corner2;
+    }
+}

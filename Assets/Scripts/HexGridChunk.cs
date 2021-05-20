@@ -85,6 +85,7 @@ public class HexGridChunk : MonoBehaviour
     {
         Vector3 center = cell.Position;
         EdgeVertices e = new EdgeVertices(center + HexMetrics.GetFirstSolidCorner(direction), center + HexMetrics.GetSecondSolidCorner(direction));
+        EdgeVertices2 e2 = new EdgeVertices2(center + HexMetrics.GetFirstInnerCorner(direction), center + HexMetrics.GetSecondInnerCorner(direction));
 
         if (cell.HasRiver)
         {
@@ -113,12 +114,12 @@ public class HexGridChunk : MonoBehaviour
 
         else
         {
-            TriangulateWithoutRiver(direction, cell, center, e);
+            TriangulateWithoutRiver(direction, cell, center, e, e2);
 
-            if (!cell.IsUnderwater && !cell.HasRoadThroughEdge(direction))
-            {
-                featureManager.AddFeature(cell,(center + e.v1 + e.v5) * (1f / 3f));
-            }
+            //if (!cell.IsUnderwater && !cell.HasRoadThroughEdge(direction))
+            //{
+            //    featureManager.AddFeature(cell,(center + e.v1 + e.v5) * (1f / 3f));
+            //}
         }
 
         if (direction <= HexDirection.SE)
@@ -204,14 +205,16 @@ public class HexGridChunk : MonoBehaviour
         }
     }
 
-    void TriangulateWithoutRiver(HexDirection direction, HexCell cell, Vector3 center, EdgeVertices e)
+    void TriangulateWithoutRiver(HexDirection direction, HexCell cell, Vector3 center, EdgeVertices e1, EdgeVertices2 e2)
     {
-        TriangulateEdgeFan(center, e, cell.Color);
-
+        //TriangulateEdgeFan(center, e, cell.Color);
+        TriangulateInnerFan(center, e2, cell.Color);
+        TriangulateBetweenInnerandOuter(e2, cell.Color, e1);
+        
         if (cell.HasRoads)
         {
             Vector2 interpolators = GetRoadInterpolators(direction, cell);
-            TriangulateRoad(center, Vector3.Lerp(center, e.v1, interpolators.x), Vector3.Lerp(center, e.v5, interpolators.y), e, cell.HasRoadThroughEdge(direction));
+            TriangulateRoad(center, Vector3.Lerp(center, e1.v1, interpolators.x), Vector3.Lerp(center, e1.v5, interpolators.y), e1, cell.HasRoadThroughEdge(direction));
         }
     }
 
@@ -664,6 +667,26 @@ public class HexGridChunk : MonoBehaviour
         terrain.AddTriangleColor(color);
         terrain.AddTriangle(center, edge.v4, edge.v5);
         terrain.AddTriangleColor(color);
+    }
+
+    void TriangulateInnerFan(Vector3 center, EdgeVertices2 edge, Color color)
+    {
+        terrain.AddTriangle(center, edge.v1, edge.v2);
+        terrain.AddTriangleColor(color);
+        terrain.AddTriangle(center, edge.v2, edge.v3);
+        terrain.AddTriangleColor(color);
+    }
+
+    void TriangulateBetweenInnerandOuter(EdgeVertices2 e1, Color c1, EdgeVertices e2)
+    {
+        terrain.AddTriangle(e1.v1, e2.v1, e2.v2);
+        terrain.AddTriangleColor(c1);
+        terrain.AddQuad(e1.v1, e1.v2, e2.v2, e2.v3);
+        terrain.AddQuadColor(c1);
+        terrain.AddQuad(e1.v2, e1.v3, e2.v3, e2.v4);
+        terrain.AddQuadColor(c1);
+        terrain.AddTriangle(e1.v3, e2.v4, e2.v5);
+        terrain.AddTriangleColor(c1);
     }
 
     void TriangulateEdgeStrip(EdgeVertices e1, Color c1, EdgeVertices e2, Color c2, bool hasRoad = false)

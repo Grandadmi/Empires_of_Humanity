@@ -17,12 +17,17 @@ public class GameManager : MonoBehaviour
     //public bool allowWorldEdit;
     //public bool allowCheats;
 
-    public List<Settlement> settlements;
+    //public List<Settlement> settlements;
     public List<string> settlementNames;
 
     //Global Variables
     public float _PopulationPerFoodUnit;
     public float _PopulationPerGoodsUnit;
+
+    //TEMP LOCATION FOR DEFUALT BUILDINGS
+    public Building _DefaultGovBuilding;
+    public Building _DefaultInfrastureBuilding;
+    public Building _DefualtHousingBuilding;
 
     
     // Start is called before the first frame update

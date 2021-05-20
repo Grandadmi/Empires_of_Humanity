@@ -913,4 +913,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main_Scene.unity
-  playerPath: F:/Starclad Games/Empire's of Humanity v0.2.1/Empires_of_Humanity.exe
+  playerPath: F:/Starclad Games/Builds/Empire's of Humanity/EoH v0.2.1/Empires_of_Humanity.exe
